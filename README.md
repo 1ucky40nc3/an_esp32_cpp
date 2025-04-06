@@ -54,7 +54,9 @@ In cases where the article can't be use this the following instructions:
 * The "Esptool" programmer is essential for uploading firmware to ESP32 boards.
 * If the correct port for the Arduino Nano ESP32 is not visible, check your USB connection and drivers.
 
-### Arduino-CLI
+## Build
+
+### Build Using the Arduino-CLI
 
 Follow the [getting started](https://arduino.github.io/arduino-cli/1.2/getting-started/) instructions of the [Arduino CLI](https://arduino.github.io/arduino-cli/1.2/).
 
@@ -62,3 +64,17 @@ Follow the [getting started](https://arduino.github.io/arduino-cli/1.2/getting-s
 # Compile and upload the `Blink` sketch
 arduino-cli compile -p /dev/ttyACM0 -P esptool -u --fqbn arduino:esp32:nano_nora Blink 
 ```
+
+## Development
+
+### Development Using the Arduino IDE
+
+#### Formatting
+
+We use the [automatic formatting feature of the Arduino IDE](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-customize-auto-formatter/). The feature uses the `.clang-format` file at the root of the sketch. You can download the default `.clang-format` file like this:
+
+```bash
+wget https://raw.githubusercontent.com/arduino/tooling-project-assets/main/other/clang-format-configuration/.clang-format -O Blink/.clang-format
+```
+
+You can do the automatic formatting by going to `Tools > Auto Format` or using the `Str + T` keyboard shortcut.
