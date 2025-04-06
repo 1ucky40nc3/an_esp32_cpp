@@ -32,4 +32,5 @@
 *.app
 
 # Sketch libraries
-*/libraries/*
+libraries/*
+!libraries/SharedLibrary

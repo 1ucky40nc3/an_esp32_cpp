@@ -4,6 +4,10 @@
 
 ### Arduino IDE
 
+We use the Arduino IDE for building, uploading and serial plotting/monitoring.
+
+#### Configure the Arduino Nano ESP32
+
 Please configure the Arduino IDE based on the following steps:
 
 1. `Tools > Board` select `Arduino Nano ESP32` (download using board manager if necessary)
@@ -11,9 +15,54 @@ Please configure the Arduino IDE based on the following steps:
 3. `Tools > USB Mode` select `Debug mode (Hardware CDC)`
 4. `Tools > Programmer` select `Esptool`
 
+#### Set Arduino IDE Preferences
+
+Please configure the Ardunio IDE preferences for a smooth [development experience](#development-using-the-arduino-ide).
+
+1. `File > Preferences... > Sketchbook location` select the current location of this repo (this enables the use of custom libraries)
+2. `File > Preferences... > Auto save` enable the auto save feature 
+
+### VSCode
+
+We use VSCode for code formatting, linting.
+
+#### Configure VSCode Extension
+
+Please install the recommended VSCode extensions from the [extensions.json](extensions.json) file.
+
+## Build
+
+### Build Using the Arduino-CLI
+
+Follow the [getting started](https://arduino.github.io/arduino-cli/1.2/getting-started/) instructions of the [Arduino CLI](https://arduino.github.io/arduino-cli/1.2/).
+
+```bash
+# Compile and upload the `Blink` sketch
+arduino-cli compile -p /dev/ttyACM0 -P esptool -u --fqbn arduino:esp32:nano_nora Blink 
+```
+
+### Build Using the Arduino IDE
+
 Compile and upload the sketch using the following steps:
 
 1. `Sketch > Upload Using Programmer`
+
+## Development
+
+### Development Using the Arduino IDE abd VSCode
+
+#### Formatting
+
+We use the [default Ardiuno IDE formatting config](https://raw.githubusercontent.com/arduino/tooling-project-assets/main/other/clang-format-configuration/.clang-format) and VSCode to automatically apply the formatting on save. You can download the default `.clang-format` file like this:
+
+```bash
+wget https://raw.githubusercontent.com/arduino/tooling-project-assets/main/other/clang-format-configuration/.clang-format -O Blink/.clang-format
+```
+
+You can do the automatic formatting by going to `Tools > Auto Format` or using the `Str + T` keyboard shortcut.
+
+
+## Troubleshooting
 
 #### Reset the Arduino bootloader on the Nano ESP32
 
@@ -53,28 +102,3 @@ In cases where the article can't be use this the following instructions:
 * The RGB LED color change is a visual indicator of the board's state.
 * The "Esptool" programmer is essential for uploading firmware to ESP32 boards.
 * If the correct port for the Arduino Nano ESP32 is not visible, check your USB connection and drivers.
-
-## Build
-
-### Build Using the Arduino-CLI
-
-Follow the [getting started](https://arduino.github.io/arduino-cli/1.2/getting-started/) instructions of the [Arduino CLI](https://arduino.github.io/arduino-cli/1.2/).
-
-```bash
-# Compile and upload the `Blink` sketch
-arduino-cli compile -p /dev/ttyACM0 -P esptool -u --fqbn arduino:esp32:nano_nora Blink 
-```
-
-## Development
-
-### Development Using the Arduino IDE
-
-#### Formatting
-
-We use the [automatic formatting feature of the Arduino IDE](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-customize-auto-formatter/). The feature uses the `.clang-format` file at the root of the sketch. You can download the default `.clang-format` file like this:
-
-```bash
-wget https://raw.githubusercontent.com/arduino/tooling-project-assets/main/other/clang-format-configuration/.clang-format -O Blink/.clang-format
-```
-
-You can do the automatic formatting by going to `Tools > Auto Format` or using the `Str + T` keyboard shortcut.
