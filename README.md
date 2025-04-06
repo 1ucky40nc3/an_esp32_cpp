@@ -49,7 +49,28 @@ Compile and upload the sketch using the following steps:
 
 ## Development
 
-### Development Using the Arduino IDE abd VSCode
+### Development Using the Arduino IDE and VSCode
+
+The following development setup uses:
+
+- Arduino IDE: building, uploading and serial plotting/monitoring and
+- VSCode: formatting, linting of code and libraries
+
+Use the [Arduino IDE setup guide](#arduino-ide) and the [VSCode setup guide](#vscode) to get started. Development processes are outline below.
+
+This development strategy has the following goals:
+
+- use well behaved tools to compile and upload code to the Arduino Nano ESP32
+- enable the testing of code on the deployment hardware
+- enable the automatic formatting of code
+
+During the development you need to have three windows open:
+
+1. An Arduino IDE window with the deployment sketch (e.g. [Blink](./Blink/Blink.ino))
+2. An Arduino IDE window with the testing sketch (e.g. [Test](./Test/Test.ino))
+3. A VSCode windows for the development of a library shared for testing and deloyment sketches, formatting and linting
+
+Use the first windows to deploy the code on the production hardware. The second windows is used to test the code on the production hardware. The last window is used for the development and automatic formatting.
 
 #### Formatting
 
